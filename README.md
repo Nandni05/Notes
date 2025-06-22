@@ -12,7 +12,6 @@ This project allows users to create and delete notes — clean and minimal
 - 💅 Beautiful UI using Tailwind CSS
 - ⚙️ Backend built with Express.js and MongoDB
 - ☁️ MongoDB Atlas cloud database
-- 🌐 Deployed frontend (Vercel) & backend (Render) *(if done)*
 
 ---
 
