@@ -7,17 +7,17 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {
-    const res = await axios.get('http://localhost:5000/api/notes');
+    const res = await axios.get('https://notes-p6x5.onrender.com/api/notes');
     setNotes(res.data);
   };
 
   const addNote = async (note) => {
-    await axios.post('http://localhost:5000/api/notes', note);
+    await axios.post('https://notes-p6x5.onrender.com/api/notes', note);
     fetchNotes();
   };
 
   const deleteNote = async (id) => {
-    await axios.delete(`http://localhost:5000/api/notes/${id}`);
+    await axios.delete(`https://notes-p6x5.onrender.com/api/notes/${id}`);
     fetchNotes();
   };
 
