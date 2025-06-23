@@ -15,7 +15,7 @@ connectDB(); // Connect MongoDB
 
 // 🟢 Get all notes
 app.get('/api/notes', async (req, res) => {
-  const notes = await Note.find();
+  const notes = await Note.find().sort({ createdAt: -1 }); // 🆕 Sort newest first
   res.json(notes);
 });
 
@@ -28,8 +28,6 @@ app.post('/api/notes', async (req, res) => {
   if (result.score > 2) mood = "😊";
   else if (result.score < -2) mood = "😞";
   else if (result.score < 0) mood = "😠";
-  console.log('Sentiment result:', result);
-  console.log('Saved mood:', mood);
 
   const newNote = new Note({ title, content, mood });
   await newNote.save();

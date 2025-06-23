@@ -5,6 +5,6 @@ const noteSchema = new mongoose.Schema({
   title: String,
   content: String,
   mood: String, // ✅ mood field is required!
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Note', noteSchema);

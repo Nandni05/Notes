@@ -35,17 +35,19 @@ const App = () => {
       <main className="max-w-5xl mx-auto px-4 py-8">
         {/* 🔶 Notes Section */}
         <section className="mb-10">
+          <NoteForm addNote={addNote} />
+        </section>
+
+        {/* 🟩 Add Note Form */}
+         {/* 🔶 Notes Section */}
+        <section >
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {notes.map((note) => (
               <NotesList key={note._id} note={note} deleteNote={deleteNote} />
             ))}
           </div>
         </section>
-
-        {/* 🟩 Add Note Form */}
-        <section>
-          <NoteForm addNote={addNote} />
-        </section>
+        
       </main>
     </div>
   );

@@ -2,9 +2,18 @@ import React from 'react';
 
 const NotesList = ({ note, deleteNote }) => {
   return (
-    <div className="bg-white rounded-xl p-5 shadow-md border-l-4 border-purple-500 hover:shadow-xl transition-all space-y-3">
-      
+    <div className="bg-white h-[240px] rounded-xl p-5 shadow-md border-l-4 border-purple-500 hover:shadow-xl transition-all space-y-3 overflow-scroll overflow-x-hidden">
+      {note.createdAt && (
+        <p className="text-sm text-gray-500 mt-1">
+        🕒{new Date(note.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+         })}
+       </p>
+     )}
       <div className="flex justify-between items-start">
+        
         <h2 className="text-xl font-bold text-purple-800">{note.title}</h2>
         <span className="text-2xl">{note.mood || '😐'}</span>
       </div>
