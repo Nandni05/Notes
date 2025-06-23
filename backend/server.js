@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 const Note = require('./models/Note');
+const Sentiment = require('sentiment');
+const sentiment = new Sentiment();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,21 +13,31 @@ app.use(cors());
 app.use(express.json());
 connectDB(); // Connect MongoDB
 
-// Get all notes
+// 🟢 Get all notes
 app.get('/api/notes', async (req, res) => {
   const notes = await Note.find();
   res.json(notes);
 });
 
-// Add a note
+// 🟢 Add a note with mood detection
 app.post('/api/notes', async (req, res) => {
   const { title, content } = req.body;
-  const newNote = new Note({ title, content });
+
+  const result = sentiment.analyze(content);
+  let mood = "😐"; // neutral
+  if (result.score > 2) mood = "😊";
+  else if (result.score < -2) mood = "😞";
+  else if (result.score < 0) mood = "😠";
+  console.log('Sentiment result:', result);
+  console.log('Saved mood:', mood);
+
+  const newNote = new Note({ title, content, mood });
   await newNote.save();
-  res.status(201).json({ message: 'Note saved!', newNote });
+
+  res.status(201).json({ message: 'Note saved with mood!', note: newNote });
 });
 
-// Delete a note
+// 🟢 Delete a note
 app.delete('/api/notes/:id', async (req, res) => {
   const id = req.params.id;
   await Note.findByIdAndDelete(id);
