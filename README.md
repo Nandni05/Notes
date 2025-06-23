@@ -8,18 +8,26 @@ This project allows users to create and delete notes — clean and minimal
 
 ## 📌 Features
 
-- 🧾 Create and delete notes in real time
-- 💅 Beautiful UI using Tailwind CSS
-- ⚙️ Backend built with Express.js and MongoDB
-- ☁️ MongoDB Atlas cloud database
+- Add, view, and delete notes
+- Mood detection using sentiment analysis (😊 / 😠 / 😞 / 😐)
+- Responsive UI with Tailwind CSS
+- Data stored in MongoDB
+- Full-stack app deployed:
+  - **Frontend** on Netlify
+  - **Backend** on Render
 
 ---
 
-## 🛠️ Tech Stack
+## 📁 Technologies Used
 
-| Frontend | Backend | Database |
-|----------|---------|----------|
-| React.js + Tailwind CSS | Node.js + Express.js | MongoDB Atlas |
+- React.js
+- Tailwind CSS
+- Node.js + Express
+- MongoDB Atlas
+- Sentiment (for AI mood detection)
+- Axios
+- Netlify + Render for deployment
 
-![alt text](<Screenshot 2025-06-22 230320.png>)
-![alt text](<Screenshot 2025-06-22 230331.png>)
+## 🚀 Live Demo
+
+🔗 [Create Journal – Live App](https://createjournal.netlify.app/)
